@@ -1,0 +1,39 @@
+{
+  "name": "bitfinex/bfx-ost-streamer",
+  "description": "Bitfinex osTicket Streamer Plugin",
+  "keywords": [
+    "bitfinex",
+    "osTicket",
+    "streamer",
+    "beanstalk",
+    "kinesis"
+  ],
+  "type": "project",
+  "require": {
+    "php": ">=7.0",
+    "ext-json": "*",
+    "ext-filter": "*",
+    "ext-mbstring": "*",
+    "pda/pheanstalk": "^3.2"
+  },
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Davide Scola",
+      "email": "davide@bitfinex.com"
+    },
+    {
+      "name": "Nicoletta Maia",
+      "email": "nicoletta@bitfinex.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "config": {
+    "vendor-dir": "lib"
+  },
+  "autoload": {
+    "psr-4": {
+      "Bitfinex\\Data\\": "include"
+    }
+  }
+}

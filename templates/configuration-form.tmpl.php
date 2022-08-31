@@ -76,7 +76,8 @@
     width: calc(350px - 1.3em);
   }
 
-  select.custom-form-field {
+  select.custom-form-field,
+  .form-field-value .redactor-box {
     width: 350px;
   }
 

@@ -61,6 +61,19 @@ class TupleFactory extends UnbindedTupleFactory {
   /**
    * {@inheritDoc}
    */
+  protected function mapping($context = NULL) : array {
+    if (isset($context) === FALSE) {
+      $context = [
+        'context' => $this->{'context'},
+      ];
+    }
+
+    return parent::mapping($context);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
   protected function options() : array {
     $options = parent::options();
 

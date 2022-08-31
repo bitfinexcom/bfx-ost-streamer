@@ -96,14 +96,17 @@ abstract class AbstractFactory {
   /**
    * Get all entities mapping.
    *
+   * @param mixed $context
+   *   A context to pass on to all event listeners.
+   *
    * @return array[]
    *   All entities mapping.
    */
-  protected function mapping() : array {
+  protected function mapping($context = NULL) : array {
     $mapping = $this->options();
 
     if ($this->{'action'} instanceof ActionInterface) {
-      $this->{'action'}->trigger($mapping);
+      $this->{'action'}->trigger($mapping, $context);
     }
 
     return $mapping;

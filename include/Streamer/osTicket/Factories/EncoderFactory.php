@@ -71,6 +71,20 @@ class EncoderFactory extends UnbindedEncoderFactory {
   /**
    * {@inheritDoc}
    */
+  protected function mapping($context = NULL) : array {
+    if (isset($context) === FALSE) {
+      $context = [
+        'format' => $this->{'format'},
+        'context' => $this->{'context'},
+      ];
+    }
+
+    return parent::mapping($context);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
   protected function options() : array {
     $options = parent::options();
 

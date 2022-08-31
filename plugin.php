@@ -28,6 +28,6 @@ return [
   'name' => /* trans */ 'Bitfinex osTicket Streamer',
   'author' => 'Davide Scola, Nicoletta Maia',
   'description' => /* trans */ 'Adds the ability to stream data.',
-  'url' => 'https://github.com/bitfinexcom/helpdesk',
+  'url' => 'https://github.com/bitfinexcom/bfx-ost-streamer',
   'plugin' => 'BitfinexStreamerPlugin.php:BitfinexStreamerPlugin',
 ];

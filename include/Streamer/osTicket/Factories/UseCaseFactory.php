@@ -82,8 +82,9 @@ class UseCaseFactory extends UnbindedUseCaseFactory {
     }
 
     if (\array_key_exists(3, $arguments) === FALSE) {
-      $cname = \get_class($arguments[2]);
-      $arguments[3] = Helper::getUseCaseQueueName(TicketsCreationUseCase::getFormatName(), $cname::getFormatName());
+      if (($cname = \get_class($arguments[2])) !== FALSE) {
+        $arguments[3] = Helper::getUseCaseQueueName(TicketsCreationUseCase::getFormatName(), $cname::getFormatName());
+      }
     }
 
     return new TicketsCreationUseCase(...$arguments);

@@ -2,11 +2,13 @@
   "name": "bitfinex/bfx-ost-streamer",
   "description": "Bitfinex osTicket Streamer Plugin",
   "keywords": [
-    "bitfinex",
-    "osTicket",
-    "streamer",
-    "beanstalk",
-    "kinesis"
+    "plugin",
+    "php",
+    "beanstalkd",
+    "osticket",
+    "kinesis",
+    "streaming-data",
+    "osticket-plugin"
   ],
   "type": "project",
   "require": {

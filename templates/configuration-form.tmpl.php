@@ -18,6 +18,15 @@
  * implied. See the License for the specific language governing permissions
  * and limitations under the License.
  */
+
+/**
+ * Custom form template.
+ *
+ * @var \Form $form
+ *   The configuration form.
+ * @var array $options
+ *   The collection of options.
+ */
 ?>
 <?php if ($form->getTitle()) : ?>
 <h1>

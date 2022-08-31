@@ -121,6 +121,10 @@ trait HasConfigurationManagementTrait {
    *
    * @return \FormField
    *   The configuration as a FormField.
+   *
+   * @phpstan-template T of \FormField
+   * @phpstan-param T $field
+   * @phpstan-return T
    */
   protected static function getConfigAsFormField(\FormField $field, string $name) : \FormField {
     $plugin = \PluginManager::getInstance(

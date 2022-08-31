@@ -25,6 +25,9 @@ use Bitfinex\Data\Validator\Strings\NotEmptyValidator;
 
 /**
  * The line ending choice field.
+ *
+ * @property array $_config
+ *   A cached version of the field's configuration.
  */
 final class LineEndingChoiceField extends \ChoiceField {
 

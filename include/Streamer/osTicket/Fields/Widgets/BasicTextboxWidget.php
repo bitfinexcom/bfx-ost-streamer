@@ -23,6 +23,11 @@ namespace Bitfinex\Data\Streamer\osTicket\Fields\Widgets;
 
 /**
  * The basic text box widget.
+ *
+ * @property mixed $value
+ *   The current value of the field.
+ * @property \TextboxField $field
+ *   The field this widget is attached to.
  */
 class BasicTextboxWidget extends \TextboxWidget {
 

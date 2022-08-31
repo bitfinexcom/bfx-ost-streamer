@@ -23,6 +23,11 @@ namespace Bitfinex\Data\Streamer\osTicket\Fields\Widgets;
 
 /**
  * The flags box choices widget.
+ *
+ * @property mixed $value
+ *   The current value of the field.
+ * @property \ChoiceField $field
+ *   The field this widget is attached to.
  */
 class FlagsBoxChoicesWidget extends \BoxChoicesWidget {
 

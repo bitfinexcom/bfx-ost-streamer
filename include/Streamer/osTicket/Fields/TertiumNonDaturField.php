@@ -23,6 +23,9 @@ namespace Bitfinex\Data\Streamer\osTicket\Fields;
 
 /**
  * The tertium non datur field.
+ *
+ * @property mixed $value
+ *   The current value of the field.
  */
 class TertiumNonDaturField extends \BooleanField {
 

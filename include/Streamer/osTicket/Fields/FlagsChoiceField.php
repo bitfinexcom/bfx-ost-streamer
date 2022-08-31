@@ -23,6 +23,9 @@ namespace Bitfinex\Data\Streamer\osTicket\Fields;
 
 /**
  * The flags choice field.
+ *
+ * @property array $_config
+ *   A cached version of the field's configuration.
  */
 class FlagsChoiceField extends \ChoiceField {
 

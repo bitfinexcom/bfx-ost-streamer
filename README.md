@@ -297,7 +297,7 @@ class StreamFormatSignalExamplePlugin extends \Plugin {
     $data[/* call to a class that implements StreamInterface::getFormatName() */] = [
       StreamFactory::DESCRIPTION_KEY => __('Stream Format Name'),
       StreamFactory::INITIALIZER_KEY => function (...$arguments) {
-        return new /* a class that implements StreamInterface */($arguments);
+        return new /* a class that implements StreamInterface */(...$arguments);
       },
     ];
   }

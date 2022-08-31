@@ -76,8 +76,15 @@
     width: calc(350px - 1.3em);
   }
 
-  select.custom-form-field {
+  select.custom-form-field,
+  .form-field-value .redactor-box {
     width: 350px;
+  }
+
+  .form-field-value textarea {
+    max-width: 340px;
+    min-width: 340px;
+    width: 340px;
   }
 
   .form-field div {

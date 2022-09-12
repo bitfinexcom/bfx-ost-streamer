@@ -67,18 +67,27 @@ class UseCaseFactory extends UnbindedUseCaseFactory {
    */
   protected function createTicketsCreationUseCase(...$arguments) : UseCaseInterface {
     if (\array_key_exists(0, $arguments) === FALSE) {
-      $factory = new TupleFactory(TicketsCreationUseCase::getFormatName());
-      $arguments[0] = $factory->create(Helper::getTupleFormat(TicketsCreationUseCase::getFormatName()));
+      $format = Helper::getTupleFormat(TicketsCreationUseCase::getFormatName());
+
+      $arguments[0] = isset($format) === FALSE
+        ? NULL
+        : (new TupleFactory(TicketsCreationUseCase::getFormatName()))->create($format);
     }
 
     if (\array_key_exists(1, $arguments) === FALSE) {
-      $factory = new RecordFactory(TicketsCreationUseCase::getFormatName());
-      $arguments[1] = $factory->create(Helper::getRecordFormat(TicketsCreationUseCase::getFormatName()));
+      $format = Helper::getRecordFormat(TicketsCreationUseCase::getFormatName());
+
+      $arguments[1] = isset($format) === FALSE
+        ? NULL
+        : (new RecordFactory(TicketsCreationUseCase::getFormatName()))->create($format);
     }
 
     if (\array_key_exists(2, $arguments) === FALSE) {
-      $factory = new StreamFactory();
-      $arguments[2] = $factory->create(Helper::getStreamFormat());
+      $format = Helper::getStreamFormat();
+
+      $arguments[2] = isset($format) === FALSE
+        ? NULL
+        : (new StreamFactory())->create($format);
     }
 
     if (\array_key_exists(3, $arguments) === FALSE) {

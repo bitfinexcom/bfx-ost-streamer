@@ -101,8 +101,11 @@ class TupleFactory extends UnbindedTupleFactory {
     }
 
     if (\array_key_exists(1, $arguments) === FALSE) {
-      $factory = new SerializerFactory($this->{'context'}, Sequence::getFormatName());
-      $arguments[1] = $factory->create(Helper::getSequenceTupleSerializerFormat($this->{'context'}));
+      $format = Helper::getSequenceTupleSerializerFormat($this->{'context'});
+
+      $arguments[1] = isset($format) === FALSE
+        ? NULL
+        : (new SerializerFactory($this->{'context'}, Sequence::getFormatName()))->create($format);
     }
 
     return new Sequence(...$arguments);

@@ -257,6 +257,7 @@ class BitfinexStreamerPluginConfig extends \PluginConfig implements \PluginCusto
       'increment' => $increment,
     ]);
 
+    $this->updateWeight($options, $weight);
     return $options;
   }
 
@@ -317,6 +318,7 @@ class BitfinexStreamerPluginConfig extends \PluginConfig implements \PluginCusto
       'increment' => $increment,
     ]);
 
+    $this->updateWeight($options, $weight);
     return $options;
   }
 
@@ -363,6 +365,7 @@ class BitfinexStreamerPluginConfig extends \PluginConfig implements \PluginCusto
       'increment' => $increment,
     ]);
 
+    $this->updateWeight($options, $weight);
     return $options;
   }
 
@@ -467,6 +470,7 @@ class BitfinexStreamerPluginConfig extends \PluginConfig implements \PluginCusto
       'increment' => $increment,
     ]);
 
+    $this->updateWeight($options, $weight);
     return $options;
   }
 
@@ -623,6 +627,7 @@ class BitfinexStreamerPluginConfig extends \PluginConfig implements \PluginCusto
       'namespace' => $namespace,
     ]);
 
+    $this->updateWeight($options, $weight);
     return $options;
   }
 
@@ -669,6 +674,7 @@ class BitfinexStreamerPluginConfig extends \PluginConfig implements \PluginCusto
       'namespace' => $namespace,
     ]);
 
+    $this->updateWeight($options, $weight);
     return $options;
   }
 
@@ -710,6 +716,30 @@ class BitfinexStreamerPluginConfig extends \PluginConfig implements \PluginCusto
    */
   protected function trigger(ActionInterface $action, &$data, $context = NULL) {
     $action->trigger($data, $context);
+  }
+
+  /**
+   * Update the weight value if needed.
+   *
+   * @param array $options
+   *   The plugin options collection.
+   * @param int $weight
+   *   The current weight value.
+   *
+   * @return void
+   */
+  protected function updateWeight(array $options, int &$weight) {
+    $field = \end($options);
+
+    if ($field instanceof \FormField) {
+      $heaviness = \intval($field->get('#weight'));
+
+      if ($heaviness > $weight) {
+        $weight = $heaviness;
+      }
+    }
+
+    \reset($options);
   }
 
 }

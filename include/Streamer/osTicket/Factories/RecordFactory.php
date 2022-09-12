@@ -101,13 +101,19 @@ class RecordFactory extends UnbindedRecordFactory {
     }
 
     if (\array_key_exists(1, $arguments) === FALSE) {
-      $factory = new EncoderFactory($this->{'context'}, KinesisRecord::getFormatName());
-      $arguments[1] = $factory->create(Helper::getKinesisRecordEncoderFormat($this->{'context'}));
+      $format = Helper::getKinesisRecordEncoderFormat($this->{'context'});
+
+      $arguments[1] = isset($format) === FALSE
+        ? NULL
+        : (new EncoderFactory($this->{'context'}, KinesisRecord::getFormatName()))->create($format);
     }
 
     if (\array_key_exists(2, $arguments) === FALSE) {
-      $factory = new SerializerFactory($this->{'context'}, KinesisRecord::getFormatName());
-      $arguments[2] = $factory->create(Helper::getKinesisRecordSerializerFormat($this->{'context'}));
+      $format = Helper::getKinesisRecordSerializerFormat($this->{'context'});
+
+      $arguments[2] = isset($format) === FALSE
+        ? NULL
+        : (new SerializerFactory($this->{'context'}, KinesisRecord::getFormatName()))->create($format);
     }
 
     return new KinesisRecord(...$arguments);

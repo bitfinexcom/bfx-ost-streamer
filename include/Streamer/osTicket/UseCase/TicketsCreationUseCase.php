@@ -117,7 +117,7 @@ class TicketsCreationUseCase extends AbstractUseCase {
       );
     }
     catch (\RuntimeException $ex) {
-      $GLOBALS['ost']->logWarning(
+      $GLOBALS['ost']->logError(
         \sprintf('%s (%s)', \basename(\BitfinexStreamerPlugin::PLUGIN_DIR), static::getFormatName()),
         $ex->getMessage(),
         FALSE

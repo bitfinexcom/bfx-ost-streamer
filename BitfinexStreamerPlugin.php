@@ -55,4 +55,18 @@ class BitfinexStreamerPlugin extends \Plugin {
     }
   }
 
+  /**
+   * {@inheritDoc}
+   */
+  public function enable() {
+    if (($has_requirements = parent::enable()) !== TRUE) {
+      return $has_requirements;
+    }
+
+    return \db_query(\sprintf("UPDATE %s SET `name` = CONCAT('__', `name`) WHERE `id` = %d AND `name` NOT LIKE '\_\_%%'",
+      \DbEngine::getCompiler()->quote(\PLUGIN_TABLE),
+      \db_input($this->getId())
+    ));
+  }
+
 }

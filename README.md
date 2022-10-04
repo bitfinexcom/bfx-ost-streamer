@@ -19,6 +19,7 @@
 - [Copying](#copying)
 - [Prerequisites](#prerequisites)
 - [Install](#install)
+   - [Caveats](#caveats)
 - [Options](#options)
    - [General Options](#general-options)
    - [Stream Options](#stream-options)
@@ -72,6 +73,12 @@ However, these extensions are default extensions of [PHP](https://www.php.net/) 
 ## Install
 
 The [*bfx-ost-streamer*](https://github.com/bitfinexcom/bfx-ost-streamer) is a standard [osTicket](https://osticket.com/) plugin, so it can be installed and configured following the standard procedure; see the [official osTicket guide](https://docs.osticket.com/en/latest/Admin/Manage/Plugins.html) to manage the plugins. Note that before activating the [*bfx-ost-streamer*](https://github.com/bitfinexcom/bfx-ost-streamer) plugin, it is required to run [composer](https://getcomposer.org/) within this plugin directory to install external libraries and verify that the environment meets all the requirements.
+
+### Caveats
+
+In order to be extensible by other plugins, [*bfx-ost-streamer*](https://github.com/bitfinexcom/bfx-ost-streamer) have to be loaded as late as possible, so that when its *bootstrap* method is executed, other plugins have already subscribed to the events of their interest. Unfortunately, [osTicket](https://osticket.com/) does not provide a proper dependency management and load sorting; however, starting with version **v1.15.2**, [osTicket](https://osticket.com/) loads plugins by name (alphabetically) instead of by installation ID. This plugin attempts to exploit this sorting by placing a double underline before its name (on the database only), to make sure it is loaded as last; this workaround has a negligible side effect that does not affect normal use.
+
+If your version of [osTicket](https://osticket.com/) is lesser than **v1.15.2** and you are unwilling or unable to apply [this patch](https://github.com/osTicket/osTicket/pull/5744.diff), you are out of luck and have to play with the order of installation.
 
 
 ## Options

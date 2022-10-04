@@ -267,20 +267,12 @@ class StreamFormatSignalExamplePlugin extends \Plugin {
   /**
    * {@inheritDoc}
    */
-  public function __construct($id) {
-    parent::__construct($id);
-
+  public function bootstrap() {
     if (\class_exists(StreamFormatsAlterSignal::class)) {
       \Signal::connect(StreamFormatsAlterSignal::getName(), [
         $this, 'addStreamFormat',
       ]);
     }
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  public function bootstrap() {
   }
 
   /**

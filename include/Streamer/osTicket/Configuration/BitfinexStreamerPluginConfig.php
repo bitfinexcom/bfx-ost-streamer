@@ -692,10 +692,10 @@ class BitfinexStreamerPluginConfig extends \PluginConfig implements \PluginCusto
    *   the second.
    */
   protected function weightSort(\FormField $a, \FormField $b) : int {
-    $x = \is_array($a->ht) && isset($a->ht['#weight']) ? $a->ht['#weight'] : 0;
-    $y = \is_array($b->ht) && isset($b->ht['#weight']) ? $b->ht['#weight'] : 0;
+    $x = \intval($a->get('#weight', 0));
+    $y = \intval($b->get('#weight', 0));
 
-    if ($x == $y) {
+    if ($x === $y) {
       return 0;
     }
 

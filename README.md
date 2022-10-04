@@ -10,8 +10,8 @@
 [![Works on osTicket v1.11](https://img.shields.io/badge/osTicket-v1.11-green)](https://github.com/osTicket/osTicket/tree/v1.11)
 [![Works on osTicket v1.12](https://img.shields.io/badge/osTicket-v1.12-green)](https://github.com/osTicket/osTicket/tree/v1.12.6)
 [![Works on osTicket v1.14](https://img.shields.io/badge/osTicket-v1.14-green)](https://github.com/osTicket/osTicket/tree/v1.14.8)
-[![Works on osTicket v1.15](https://img.shields.io/badge/osTicket-v1.15-green)](https://github.com/osTicket/osTicket/tree/v1.15.6)
-[![Works on osTicket v1.16](https://img.shields.io/badge/osTicket-v1.16-green)](https://github.com/osTicket/osTicket/tree/v1.16.1)
+[![Works on osTicket v1.15](https://img.shields.io/badge/osTicket-v1.15-green)](https://github.com/osTicket/osTicket/tree/v1.15.8)
+[![Works on osTicket v1.16](https://img.shields.io/badge/osTicket-v1.16-green)](https://github.com/osTicket/osTicket/tree/v1.16.3)
 
 <img align="right" width="20%" src="https://osticket.com/wp-content/uploads/2021/03/osticket-supsys-new-1-e1616621912452.png" />
 

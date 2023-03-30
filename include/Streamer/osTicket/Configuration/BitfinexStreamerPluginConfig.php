@@ -120,10 +120,17 @@ class BitfinexStreamerPluginConfig extends \PluginConfig implements \PluginCusto
   /**
    * {@inheritDoc}
    */
-  public function renderCustomConfig() {
+  public function renderConfig() {
     $options = [];
     $form = $this->getForm();
     include \BitfinexStreamerPlugin::PLUGIN_DIR . '/templates/configuration-form.tmpl.php';
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public function renderCustomConfig() {
+    $this->renderConfig();
   }
 
   /**

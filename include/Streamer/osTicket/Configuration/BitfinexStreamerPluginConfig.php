@@ -120,7 +120,7 @@ class BitfinexStreamerPluginConfig extends \PluginConfig implements \PluginCusto
   /**
    * {@inheritDoc}
    */
-  public function renderCustomConfig() {
+  public function renderConfig() {
     $options = [];
     $form = $this->getForm();
     include \BitfinexStreamerPlugin::PLUGIN_DIR . '/templates/configuration-form.tmpl.php';
@@ -129,9 +129,70 @@ class BitfinexStreamerPluginConfig extends \PluginConfig implements \PluginCusto
   /**
    * {@inheritDoc}
    */
+  public function renderCustomConfig() {
+    $this->renderConfig();
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public function saveConfig() {
+    try {
+      $form = $this->getForm();
+
+      if ($form instanceof \Form && $form->isValid() === TRUE) {
+        $errors = [];
+        $values = $form->getClean();
+
+        $has_requirements = \is_array($values) === TRUE
+          && $this->pre_save($values, $errors) === TRUE
+          && \count($errors += $form->errors()) === 0;
+
+        if ($has_requirements) {
+          $data = [];
+
+          foreach ($values as $name => $value) {
+            $field = $form->getField($name);
+
+            if ($field instanceof \FormField) {
+              try {
+                $data[$name] = $field->to_database($value);
+              }
+
+              catch (\FieldUnchanged $ex) {
+                unset($data[$name]);
+              }
+            }
+          }
+
+          return $this->updateAll($data);
+        }
+      }
+    }
+
+    catch (\Throwable $ex) {
+    }
+
+    return FALSE;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
   public function saveCustomConfig() {
-    $errors = [];
-    return $this->commitForm($errors);
+    if (($success = $this->saveConfig()) === TRUE) {
+      if (empty($GLOBALS['msg']) === TRUE) {
+        $GLOBALS['msg'] = \__('Instance Updated Successfully');
+      }
+    }
+
+    else {
+      if (empty($GLOBALS['errors']['err']) === TRUE) {
+        $GLOBALS['errors']['err'] = \__('Unable to update Plugin Instance.');
+      }
+    }
+
+    return $success;
   }
 
   /**

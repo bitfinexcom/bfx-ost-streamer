@@ -27,6 +27,9 @@ use Bitfinex\Data\Streamer\osTicket\Configuration\BitfinexStreamerPluginConfig;
 
 /**
  * Entry point class to bfx-ost-streamer plugin.
+ *
+ * @property array $ht
+ *   A cached version of the plugin's configuration taken from the database.
  */
 class BitfinexStreamerPlugin extends \Plugin {
 
@@ -53,6 +56,24 @@ class BitfinexStreamerPlugin extends \Plugin {
         $factory->create($name);
       }
     }
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public function init() {
+    if (\method_exists(parent::class, 'init') === TRUE) {
+      parent::init();
+    }
+
+    $this->{'ht'}['name'] = $this->{'info'}['name'];
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public function isMultiInstance() {
+    return FALSE;
   }
 
   /**

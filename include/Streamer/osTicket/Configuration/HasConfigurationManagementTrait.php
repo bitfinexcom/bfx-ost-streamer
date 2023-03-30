@@ -127,16 +127,25 @@ trait HasConfigurationManagementTrait {
    * @phpstan-return T
    */
   protected static function getConfigAsFormField(\FormField $field, string $name) : \FormField {
-    $plugin = \PluginManager::getInstance(
-      \sprintf('plugins/%s', \basename(\BitfinexStreamerPlugin::PLUGIN_DIR))
-    );
+    try {
+      $plugin = \PluginManager::getInstance(
+        \sprintf('plugins/%s', \basename(\BitfinexStreamerPlugin::PLUGIN_DIR))
+      );
 
-    if ($plugin instanceof \Plugin) {
-      $config = $plugin->getConfig();
+      if ($plugin instanceof \Plugin) {
+        if (\method_exists($plugin, 'getActiveInstances') === TRUE) {
+          $plugin = $plugin->getActiveInstances()->one();
+        }
 
-      if ($config instanceof \PluginConfig) {
-        $field->setValue($config->get($name));
+        $config = $plugin->getConfig();
+
+        if ($config instanceof \PluginConfig) {
+          $field->setValue($config->get($name));
+        }
       }
+    }
+
+    catch (\Throwable $ex) {
     }
 
     return $field;

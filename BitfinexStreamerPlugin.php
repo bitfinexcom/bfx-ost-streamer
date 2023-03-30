@@ -58,6 +58,13 @@ class BitfinexStreamerPlugin extends \Plugin {
   /**
    * {@inheritDoc}
    */
+  public function isMultiInstance() {
+    return FALSE;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
   public function enable() {
     if (($has_requirements = parent::enable()) !== TRUE) {
       return $has_requirements;

@@ -3,7 +3,7 @@
 /**
  * This file is part of bfx-ost-streamer.
  *
- * Copyright (C) 2021-2022 Davide Scola <davide@bitfinex.com>,
+ * Copyright (C) 2021-2023 Davide Scola <davide@bitfinex.com>,
  *                         Nicoletta Maia <nicoletta@bitfinex.com>.
  *
  * Licensed under the Apache License,  Version 2.0 (the "License"); you may

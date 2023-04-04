@@ -24,7 +24,7 @@
  */
 return [
   'id' => /* notrans */ 'bfx:ost:streamer',
-  'version' => '1.1.0',
+  'version' => '1.2.0',
   'ost_version' => '1.10',
   'name' => /* trans */ 'Bitfinex osTicket Streamer',
   'author' => 'Davide Scola, Nicoletta Maia',
